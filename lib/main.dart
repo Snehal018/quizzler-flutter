@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizzler/question.dart';
 
 void main() => runApp(Quizzler());
 
@@ -54,6 +55,10 @@ void addFalse() {
     ),
   );
 }
+
+Questions q1 = Questions(q: questions[0], a: answers[0]);
+Questions q2 = Questions(q: questions[1], a: answers[1]);
+Questions q3 = Questions(q: questions[2], a: answers[2]);
 
 class _QuizPageState extends State<QuizPage> {
   @override

@@ -6,6 +6,7 @@ class Quizzler extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey.shade900,
         body: SafeArea(
@@ -22,6 +23,26 @@ class Quizzler extends StatelessWidget {
 class QuizPage extends StatefulWidget {
   @override
   _QuizPageState createState() => _QuizPageState();
+}
+
+List<Icon> scoreKeeper = [];
+
+void addTrue() {
+  scoreKeeper.add(
+    Icon(
+      Icons.check,
+      color: Colors.green,
+    ),
+  );
+}
+
+void addFalse() {
+  scoreKeeper.add(
+    Icon(
+      Icons.close,
+      color: Colors.red,
+    ),
+  );
 }
 
 class _QuizPageState extends State<QuizPage> {
@@ -62,6 +83,9 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
+                setState(() {
+                  addTrue();
+                });
               },
             ),
           ),
@@ -80,11 +104,14 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
+                setState(() {
+                  addFalse();
+                });
               },
             ),
           ),
         ),
-        //TODO: Add a Row here as your score keeper
+        Row(children: scoreKeeper),
       ],
     );
   }
